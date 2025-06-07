@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "tsql",
+      "camelcase": "Tsql",
+      "title": "Transact-SQL",
+      "scope": "source.tsql",
+      "file-types": [
+        "sql,tsql"
+      ],
+      "injection-regex": "^tsql$",
+      "class-name": "TreeSitterTsql"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter parser for MSSQL T-SQL inspired by the really powerful alround SQL parser by DerekStride (https://github.com/DerekStride/tree-sitter-sql)",
+    "authors": [
+      {
+        "name": "krixgris",
+        "url": "https://github.com/krixgris"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/krixgris/tree-sitter-tsql"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
