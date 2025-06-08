@@ -3,56 +3,6 @@
   "name": "tsql",
   "word": "_identifier",
   "rules": {
-    "go": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "\\s*"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "PATTERN",
-            "value": "GO",
-            "flags": "i"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "\\s*"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "\\r?\\n"
-              },
-              {
-                "type": "PATTERN",
-                "value": "$"
-              }
-            ]
-          }
-        ]
-      }
-    },
     "program": {
       "type": "REPEAT1",
       "content": {
@@ -89,19 +39,6 @@
           }
         ]
       }
-    },
-    "batch": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "program"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "go"
-        }
-      ]
     },
     "optional_terminator": {
       "type": "CHOICE",

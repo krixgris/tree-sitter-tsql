@@ -67,12 +67,12 @@ module.exports = grammar({
   word: $ => $._identifier,
 
   rules: {
-    go: $ => token(seq(
-      optional(/\s*/),
-      /GO/i,
-      optional(/\s*/),
-      choice(/\r?\n/, /$/),  // allow newline or EOF
-    )),
+    // go: $ => token(seq(
+    //   optional(/\s*/),
+    //   /GO/i,
+    //   optional(/\s*/),
+    //   choice(/\r?\n/, /$/),  // allow newline or EOF
+    // )),
 
     program: $ => repeat1(
       seq(
@@ -84,10 +84,10 @@ module.exports = grammar({
         optional(';'),
       ),
     ),
-    batch: $ => seq(
-      $.program,
-      $.go,
-    ),
+    // batch: $ => seq(
+    //   $.program,
+    //   $.go,
+    // ),
 
     // source_file: $ => repeat($.batch),
 
