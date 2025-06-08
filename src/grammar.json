@@ -40,6 +40,26 @@
         ]
       }
     },
+    "batch": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "program"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "keyword_go"
+        }
+      ]
+    },
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "batch"
+      }
+    },
     "optional_terminator": {
       "type": "CHOICE",
       "members": [
@@ -52,6 +72,10 @@
           "value": "GO"
         }
       ]
+    },
+    "keyword_go": {
+      "type": "PATTERN",
+      "value": "[gG][oO]"
     },
     "keyword_select": {
       "type": "PATTERN",

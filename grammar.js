@@ -84,14 +84,16 @@ module.exports = grammar({
         optional(';'),
       ),
     ),
-    // batch: $ => seq(
-    //   $.program,
-    //   $.go,
-    // ),
+    batch: $ => seq(
+      $.program,
+      $.keyword_go,
+    ),
 
-    // source_file: $ => repeat($.batch),
+    source_file: $ => repeat($.batch),
 
     optional_terminator: _ => choice(';', 'GO'),
+
+    keyword_go: _ => make_keyword("go"),
 
     keyword_select: _ => make_keyword("select"),
     keyword_delete: _ => make_keyword("delete"),
