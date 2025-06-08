@@ -4,50 +4,41 @@
   "word": "_identifier",
   "rules": {
     "program": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
+      "type": "REPEAT",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "transaction"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "statement"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "block"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "transaction"
               },
+              {
+                "type": "SYMBOL",
+                "name": "statement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "block"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
               {
                 "type": "STRING",
                 "value": ";"
+              },
+              {
+                "type": "BLANK"
               }
             ]
           }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "statement"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
+        ]
+      }
     },
     "optional_terminator": {
       "type": "CHOICE",
@@ -20415,6 +20406,36 @@
     [
       "function_argument",
       "object_reference"
+    ],
+    [
+      "_vacuum_table"
+    ],
+    [
+      "create_role"
+    ],
+    [
+      "create_type"
+    ],
+    [
+      "create_database"
+    ],
+    [
+      "create_extension"
+    ],
+    [
+      "alter_role"
+    ],
+    [
+      "drop_database"
+    ],
+    [
+      "_compute_stats"
+    ],
+    [
+      "column_definition"
+    ],
+    [
+      "when_clause"
     ]
   ],
   "precedences": [
