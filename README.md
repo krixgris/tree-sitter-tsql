@@ -4,6 +4,7 @@ The reason for not just forking and making PR's is that these changes (mostly in
 I did add the LICENSE.md from the original repo and I think I did what I have to to ensure I am not breaking any license. If I am incorrect here, let me know and I will take this down.
 
 # Differences so far from the original repo
+- EVERY file is included, so even parser.c and scanner.c as I just wanted to keep this repo simple and easy to use
 - [] as quotes is permitted, and that allows an identifier to contain any characters
 - go splits programs into several programs
 - ; is optional everywhere, and even when they may be required in TSQL (CTE's for instance etc.. ), but my goal is to make a parser that is lenient without it breaking easily
