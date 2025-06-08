@@ -41,6 +41,8 @@ module.exports = grammar({
     [$._compute_stats],
     [$.column_definition],
     [$.when_clause],
+    [$.function_body],
+    [$._function_return, $.binary_expression, $.between_expression],
   ],
 
   precedences: $ => [
@@ -666,7 +668,7 @@ module.exports = grammar({
       repeat(
         seq(
           $.statement,
-          ';'
+          optional(';')
         ),
       ),
       choice(
@@ -695,7 +697,7 @@ module.exports = grammar({
       repeat(
         seq(
           $.statement,
-          ';'
+          optional(';')
         ),
       ),
       $.keyword_end,
@@ -1251,7 +1253,7 @@ module.exports = grammar({
           ),
         ),
       ),
-      ';',
+      optional(';'),
     ),
 
     _function_body_statement: $ => choice(
@@ -1262,7 +1264,7 @@ module.exports = grammar({
     function_body: $ => choice(
       seq(
         $._function_return,
-        ';'
+        optional(';')
       ),
       seq(
         $.keyword_begin,
@@ -1270,7 +1272,7 @@ module.exports = grammar({
         repeat1(
           seq(
             $._function_body_statement,
-            ';',
+            optional(';'),
           ),
         ),
         $.keyword_end,
@@ -1290,7 +1292,7 @@ module.exports = grammar({
         repeat1(
           seq(
             $._function_body_statement,
-            ';',
+            optional(';'),
           ),
         ),
         $.keyword_end,
