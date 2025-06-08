@@ -29,6 +29,7 @@ module.exports = grammar({
     [$.between_expression, $.binary_expression],
     [$.time],
     [$.timestamp],
+    [$.function_argument, $.object_reference],
   ],
 
   precedences: $ => [
@@ -3617,6 +3618,7 @@ module.exports = grammar({
       $._identifier,
       $._double_quote_string,
       $._tsql_parameter,
+      seq("[", /[^\[\]]+/,"]"),
       seq("`", $._identifier, "`"),
     ),
     _tsql_parameter: $ => seq('@', $._identifier),

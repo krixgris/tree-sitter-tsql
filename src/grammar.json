@@ -20327,6 +20327,23 @@
           "members": [
             {
               "type": "STRING",
+              "value": "["
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^\\[\\]]+"
+            },
+            {
+              "type": "STRING",
+              "value": "]"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
               "value": "`"
             },
             {
@@ -20394,6 +20411,10 @@
     ],
     [
       "timestamp"
+    ],
+    [
+      "function_argument",
+      "object_reference"
     ]
   ],
   "precedences": [
