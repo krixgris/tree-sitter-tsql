@@ -80,6 +80,7 @@ module.exports = grammar({
           $.transaction,
           $.statement,
           $.block,
+          $.use_statement,
         ),
         optional(';'),
       ),
@@ -89,11 +90,14 @@ module.exports = grammar({
       $.go_separator,
     ),
 
-    
-    go_separator: $ => 
-    seq(
-      $.keyword_go,
+    use_statement: $ => seq(
+      $.keyword_use,
+      $.identifier,
     ),
+    go_separator: $ =>
+      seq(
+        $.keyword_go,
+      ),
     source_file: $ => repeat($.batch),
 
     optional_terminator: _ => choice(';', 'GO'),
