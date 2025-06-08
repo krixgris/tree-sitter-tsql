@@ -49,6 +49,15 @@
         },
         {
           "type": "SYMBOL",
+          "name": "go_separator"
+        }
+      ]
+    },
+    "go_separator": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
           "name": "keyword_go"
         }
       ]

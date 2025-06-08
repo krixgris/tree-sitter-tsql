@@ -86,9 +86,14 @@ module.exports = grammar({
     ),
     batch: $ => seq(
       $.program,
-      $.keyword_go,
+      $.go_separator,
     ),
 
+    
+    go_separator: $ => 
+    seq(
+      $.keyword_go,
+    ),
     source_file: $ => repeat($.batch),
 
     optional_terminator: _ => choice(';', 'GO'),
