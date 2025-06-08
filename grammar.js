@@ -62,9 +62,9 @@ module.exports = grammar({
             $.statement,
             $.block,
           ),
-          optional($.optional_terminator),
+          // optional($.optional_terminator),
           // ';',
-          // optional(';'),
+          optional(';'),
           // optional('GO'),
 
         ),

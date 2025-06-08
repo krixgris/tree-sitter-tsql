@@ -32,8 +32,8 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "optional_terminator"
+                    "type": "STRING",
+                    "value": ";"
                   },
                   {
                     "type": "BLANK"

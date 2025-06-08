@@ -8607,11 +8607,6 @@
     }
   },
   {
-    "type": "optional_terminator",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "order_by",
     "named": true,
     "fields": {},
@@ -8937,10 +8932,6 @@
       "types": [
         {
           "type": "block",
-          "named": true
-        },
-        {
-          "type": "optional_terminator",
           "named": true
         },
         {
@@ -11780,10 +11771,6 @@
   },
   {
     "type": "@",
-    "named": false
-  },
-  {
-    "type": "GO",
     "named": false
   },
   {
