@@ -29,19 +29,23 @@
                 ]
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ";"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "STRING",
+                "value": ";"
               }
             ]
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "statement"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -5221,6 +5225,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_optimize_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_merge_statement"
         },
         {
@@ -6619,7 +6627,23 @@
             },
             {
               "type": "SYMBOL",
+              "name": "create_type"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "create_database"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "create_role"
+            },
+            {
+              "type": "SYMBOL",
               "name": "create_sequence"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "create_extension"
             },
             {
               "type": "SYMBOL",
@@ -10366,6 +10390,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "alter_role"
+            },
+            {
+              "type": "SYMBOL",
               "name": "alter_sequence"
             }
           ]
@@ -12542,6 +12570,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "drop_database"
+            },
+            {
+              "type": "SYMBOL",
               "name": "drop_role"
             },
             {
@@ -14080,12 +14112,126 @@
         {
           "type": "SYMBOL",
           "name": "keyword_matched"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "keyword_and"
+                },
+                {
+                  "type": "PREC_RIGHT",
+                  "value": 0,
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "predicate",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_expression"
+                        }
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "("
+                          },
+                          {
+                            "type": "FIELD",
+                            "name": "predicate",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "_expression"
+                            }
+                          },
+                          {
+                            "type": "STRING",
+                            "value": ")"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "keyword_then"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "keyword_delete"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "keyword_update"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_set_values"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "keyword_insert"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_insert_values"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "where"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     "_optimize_statement": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_compute_stats"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_vacuum_table"
+        },
         {
           "type": "SYMBOL",
           "name": "_optimize_table"
@@ -15425,6 +15571,13 @@
           "content": {
             "type": "SYMBOL",
             "name": "_type"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_column_constraint"
           }
         }
       ]

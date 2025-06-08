@@ -63,19 +63,19 @@ module.exports = grammar({
             $.block,
           ),
           // optional($.optional_terminator),
-          // ';',
-          optional(';'),
+          ';',
+          // optional(';'),
           // optional('GO'),
 
         ),
       ),
       // // optionally, a single statement without a terminating ;
-      // optional(
-      //   $.statement,
-      // ),
+      optional(
+        $.statement,
+      ),
     ),
 
-    optional_terminator: _ => choice(';', 'GO' ),
+    optional_terminator: _ => choice(';', 'GO'),
 
     keyword_select: _ => make_keyword("select"),
     keyword_delete: _ => make_keyword("delete"),
@@ -718,7 +718,7 @@ module.exports = grammar({
       $._alter_statement,
       $._drop_statement,
       $._rename_statement,
-      // $._optimize_statement,
+      $._optimize_statement,
       $._merge_statement,
       $.comment_statement,
       $.set_statement,
@@ -994,11 +994,11 @@ module.exports = grammar({
         $.create_materialized_view,
         $.create_index,
         $.create_function,
-        // $.create_type,
-        // $.create_database,
-        // $.create_role,
+        $.create_type,
+        $.create_database,
+        $.create_role,
         $.create_sequence,
-        // $.create_extension,
+        $.create_extension,
         $.create_trigger,
         prec.left(seq(
           $.create_schema,
@@ -1672,7 +1672,7 @@ module.exports = grammar({
         $.alter_type,
         $.alter_index,
         $.alter_database,
-        // $.alter_role,
+        $.alter_role,
         $.alter_sequence,
       ),
     ),
@@ -2107,7 +2107,7 @@ module.exports = grammar({
         $.drop_index,
         $.drop_type,
         $.drop_schema,
-        // $.drop_database,
+        $.drop_database,
         $.drop_role,
         $.drop_sequence,
         $.drop_extension,
@@ -2438,30 +2438,30 @@ module.exports = grammar({
       $.keyword_when,
       optional($.keyword_not),
       $.keyword_matched,
-      // optional(
-      //   seq(
-      //     $.keyword_and,
-      //     optional_parenthesis(field("predicate", $._expression))
-      //   )
-      // ),
-      // $.keyword_then,
-      // choice(
-      //   $.keyword_delete,
-      //   seq(
-      //     $.keyword_update,
-      //     $._set_values,
-      //   ),
-      //   seq(
-      //     $.keyword_insert,
-      //     $._insert_values
-      //   ),
-      //   optional($.where)
-      // )
+      optional(
+        seq(
+          $.keyword_and,
+          optional_parenthesis(field("predicate", $._expression))
+        )
+      ),
+      $.keyword_then,
+      choice(
+        $.keyword_delete,
+        seq(
+          $.keyword_update,
+          $._set_values,
+        ),
+        seq(
+          $.keyword_insert,
+          $._insert_values
+        ),
+        optional($.where)
+      )
     ),
 
     _optimize_statement: $ => choice(
-      // $._compute_stats,
-      // $._vacuum_table,
+      $._compute_stats,
+      $._vacuum_table,
       $._optimize_table,
     ),
 
@@ -2728,7 +2728,7 @@ module.exports = grammar({
     column_definition: $ => seq(
       field('name', $._column),
       field('type', $._type),
-      // repeat($._column_constraint),
+      repeat($._column_constraint),
     ),
 
     _column_comment: $ => seq(
