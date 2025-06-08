@@ -55,10 +55,6 @@
         {
           "type": "STRING",
           "value": "GO"
-        },
-        {
-          "type": "STRING",
-          "value": "\n"
         }
       ]
     },

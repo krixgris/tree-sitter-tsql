@@ -75,7 +75,7 @@ module.exports = grammar({
       // ),
     ),
 
-    optional_terminator: _ => choice(';', 'GO', '\n'),
+    optional_terminator: _ => choice(';', 'GO' ),
 
     keyword_select: _ => make_keyword("select"),
     keyword_delete: _ => make_keyword("delete"),
